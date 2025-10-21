@@ -15,7 +15,7 @@ Website moderno, elegante e totalmente responsivo desenvolvido em React, com des
   - Comunicação Estratégica
   - Desenvolvimento de Marcas
   - Consultoria Estratégica
-  - Presença Digital
+  - Presença Digital.
   - Campanhas Publicitárias
 - **📞 Contactos**: Informações de contacto, formulário e integração com WhatsApp
 
