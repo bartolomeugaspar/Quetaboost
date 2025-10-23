@@ -364,16 +364,23 @@
 }
 
 .login-footer {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
+  margin-top: 1.5rem;
   text-align: center;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
 }
 
-.login-footer p {
-  margin-bottom: 0.5rem;
+.forgot-password-link {
+  color: var(--gold-color);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
 }
 
 /* Admin Dashboard */

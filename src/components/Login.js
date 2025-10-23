@@ -107,6 +107,12 @@ function Login() {
           >
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
+
+          <div className="login-footer">
+            <a href="/forgot-password" className="forgot-password-link">
+              Esqueci minha senha
+            </a>
+          </div>
         </form>
       </div>
     </div>
