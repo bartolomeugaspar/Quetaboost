@@ -1081,3 +1081,6 @@
     padding: 1.5rem;
   }
 }
+
+/* Import Blog and Admin styles */
+@import './BlogAdmin.css';
