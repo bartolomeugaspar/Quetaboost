@@ -38,12 +38,30 @@ function DashboardContentNew({ stats }) {
       const sorted = [...allPosts].sort((a, b) => b.views - a.views);
       setTopPosts(sorted.slice(0, 5));
 
-      // Preparar dados para gráfico de visualizações (últimos 7 posts)
-      const recentPosts = allPosts.slice(0, 7).reverse();
-      const viewsChartData = recentPosts.map(post => ({
-        name: post.title.substring(0, 15) + '...',
-        views: post.views,
-        date: new Date(post.created_at).toLocaleDateString('pt-PT', { day: '2-digit', month: 'short' })
+      // Preparar dados para gráfico de visualizações por dia (últimos 7 dias)
+      const viewsByDay = {};
+      const today = new Date();
+      
+      // Inicializar últimos 7 dias com 0 visualizações
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(date.getDate() - i);
+        const dateKey = date.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit' });
+        viewsByDay[dateKey] = 0;
+      }
+      
+      // Contar visualizações por dia (baseado na data de criação dos posts)
+      allPosts.forEach(post => {
+        const postDate = new Date(post.created_at);
+        const dateKey = postDate.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit' });
+        if (viewsByDay.hasOwnProperty(dateKey)) {
+          viewsByDay[dateKey] += post.views;
+        }
+      });
+      
+      const viewsChartData = Object.entries(viewsByDay).map(([date, views]) => ({
+        date,
+        views
       }));
       setViewsData(viewsChartData);
 
@@ -99,27 +117,11 @@ function DashboardContentNew({ stats }) {
       <div className="welcome-card">
         <div className="welcome-content">
           <div className="welcome-icon">
-            <Activity size={32} />
+            <Activity size={28} />
           </div>
           <div className="welcome-text">
             <h2>Bem-vindo ao Painel Queta Boost</h2>
             <p>Acompanhe o desempenho do seu blog, gerencie contatos e visualize estatísticas em tempo real. Sistema totalmente operacional com {stats.totalPosts} posts publicados e {stats.totalViews} visualizações totais.</p>
-          </div>
-        </div>
-        <div className="welcome-stats">
-          <div className="welcome-stat-item">
-            <span className="welcome-stat-value">{publishedPosts}</span>
-            <span className="welcome-stat-label">Posts Ativos</span>
-          </div>
-          <div className="welcome-stat-divider"></div>
-          <div className="welcome-stat-item">
-            <span className="welcome-stat-value">{stats.totalViews}</span>
-            <span className="welcome-stat-label">Total de Views</span>
-          </div>
-          <div className="welcome-stat-divider"></div>
-          <div className="welcome-stat-item">
-            <span className="welcome-stat-value">{newContacts}</span>
-            <span className="welcome-stat-label">Novos Contatos</span>
           </div>
         </div>
       </div>
@@ -216,7 +218,7 @@ function DashboardContentNew({ stats }) {
             <div className="chart-icon blue">
               <BarChart3 size={20} />
             </div>
-            <h3>Visualizações por Post</h3>
+            <h3>Visualizações por Dia (Últimos 7 Dias)</h3>
           </div>
           <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={viewsData}>
