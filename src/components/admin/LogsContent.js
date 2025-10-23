@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Calendar, User, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { Shield, Calendar, User, AlertCircle, CheckCircle, XCircle, Search, Filter } from 'lucide-react';
 import { API_BASE_URL } from '../../config/api';
 
 function LogsContent() {
