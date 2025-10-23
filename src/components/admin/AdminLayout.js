@@ -76,7 +76,11 @@ function AdminLayout({ children }) {
 
   return (
     <div className="admin-dashboard-new">
-      <Sidebar sidebarOpen={sidebarOpen} stats={stats} />
+      <Sidebar 
+        sidebarOpen={sidebarOpen} 
+        setSidebarOpen={setSidebarOpen}
+        stats={stats} 
+      />
       
       <div className={`admin-main-wrapper ${sidebarOpen ? '' : 'sidebar-closed'}`}>
         <Header 

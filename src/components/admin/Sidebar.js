@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   BarChart3, 
@@ -8,7 +8,7 @@ import {
   LogOut
 } from 'lucide-react';
 
-function Sidebar({ sidebarOpen, stats }) {
+function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,6 +21,33 @@ function Sidebar({ sidebarOpen, stats }) {
   const isActive = (path) => {
     return location.pathname === path;
   };
+  
+  const handleNavigate = (path) => {
+    navigate(path);
+    // Fechar sidebar no mobile após navegação
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
+  };
+  
+  // Fechar sidebar ao clicar fora dela no mobile
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (window.innerWidth <= 768 && sidebarOpen) {
+        const sidebar = document.querySelector('.admin-sidebar');
+        const toggleButton = document.querySelector('.sidebar-toggle');
+        
+        if (sidebar && !sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+          setSidebarOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sidebarOpen, setSidebarOpen]);
 
   return (
     <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
@@ -34,7 +61,7 @@ function Sidebar({ sidebarOpen, stats }) {
       <nav className="sidebar-nav">
         <button 
           className={isActive('/admin/dashboard') ? 'active' : ''}
-          onClick={() => navigate('/admin/dashboard')}
+          onClick={() => handleNavigate('/admin/dashboard')}
         >
           <BarChart3 size={20} />
           {sidebarOpen && <span>Dashboard</span>}
@@ -42,7 +69,7 @@ function Sidebar({ sidebarOpen, stats }) {
         
         <button 
           className={isActive('/admin/posts') ? 'active' : ''}
-          onClick={() => navigate('/admin/posts')}
+          onClick={() => handleNavigate('/admin/posts')}
         >
           <FileText size={20} />
           {sidebarOpen && <span>Posts</span>}
@@ -51,7 +78,7 @@ function Sidebar({ sidebarOpen, stats }) {
         
         <button 
           className={isActive('/admin/contacts') ? 'active' : ''}
-          onClick={() => navigate('/admin/contacts')}
+          onClick={() => handleNavigate('/admin/contacts')}
         >
           <Mail size={20} />
           {sidebarOpen && <span>Contatos</span>}
@@ -62,7 +89,7 @@ function Sidebar({ sidebarOpen, stats }) {
         
         <button 
           className={isActive('/admin/users') ? 'active' : ''}
-          onClick={() => navigate('/admin/users')}
+          onClick={() => handleNavigate('/admin/users')}
         >
           <Users size={20} />
           {sidebarOpen && <span>Usuários</span>}

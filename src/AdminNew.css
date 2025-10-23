@@ -1185,18 +1185,35 @@
 }
 
 /* Responsive */
+
+/* Tablets e telas médias (1024px e abaixo) */
 @media (max-width: 1024px) {
   .admin-sidebar {
+    width: 80px;
+  }
+  
+  .admin-sidebar.closed {
     width: 80px;
   }
 
   .admin-sidebar .sidebar-logo h2,
   .admin-sidebar .sidebar-nav button span:not(.badge),
-  .admin-sidebar .sidebar-settings span {
+  .admin-sidebar .sidebar-logout span {
     display: none;
+  }
+  
+  .admin-sidebar .sidebar-nav button .badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    margin: 0;
   }
 
   .admin-main-wrapper {
+    margin-left: 80px;
+  }
+  
+  .admin-main-wrapper.sidebar-closed {
     margin-left: 80px;
   }
 
@@ -1205,16 +1222,45 @@
   }
 }
 
+/* Tablets pequenos e mobile (768px e abaixo) */
 @media (max-width: 768px) {
   .admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 260px;
     transform: translateX(-100%);
+    z-index: 1001;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
   }
 
   .admin-sidebar.open {
     transform: translateX(0);
   }
+  
+  .admin-sidebar.closed {
+    transform: translateX(-100%);
+    width: 260px;
+  }
+  
+  /* Mostrar textos quando sidebar está aberta no mobile */
+  .admin-sidebar.open .sidebar-logo h2,
+  .admin-sidebar.open .sidebar-nav button span:not(.badge),
+  .admin-sidebar.open .sidebar-logout span {
+    display: block;
+  }
+  
+  .admin-sidebar.open .sidebar-nav button .badge {
+    position: static;
+    margin-left: auto;
+  }
 
   .admin-main-wrapper {
+    margin-left: 0;
+  }
+  
+  .admin-main-wrapper.sidebar-closed {
     margin-left: 0;
   }
 
@@ -1225,8 +1271,23 @@
   .header-left h1 {
     font-size: 1.25rem;
   }
+  
+  .header-left {
+    gap: 1rem;
+  }
+  
   .user-info {
     display: none;
+  }
+  
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .header-right {
+    gap: 1rem;
   }
 
   .posts-content-new {
@@ -1243,5 +1304,78 @@
 
   .admin-table-new {
     min-width: 800px;
+  }
+}
+
+/* Mobile pequeno (480px e abaixo) */
+@media (max-width: 480px) {
+  .admin-sidebar {
+    width: 240px;
+  }
+  
+  .sidebar-header {
+    padding: 1rem;
+  }
+  
+  .sidebar-logo img {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .sidebar-logo h2 {
+    font-size: 1.125rem;
+  }
+  
+  .sidebar-nav button {
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
+  }
+  
+  .sidebar-logout {
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
+  }
+  
+  .admin-header-new {
+    padding: 0.75rem 1rem;
+  }
+  
+  .header-left h1 {
+    font-size: 1.125rem;
+  }
+  
+  .sidebar-toggle {
+    padding: 0.375rem;
+  }
+  
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+  
+  .header-notification {
+    padding: 0.375rem;
+  }
+  
+  .notification-badge {
+    font-size: 0.6rem;
+    min-width: 14px;
+    height: 14px;
+    padding: 0.1rem 0.3rem;
+  }
+}
+
+/* Overlay para fechar sidebar no mobile */
+@media (max-width: 768px) {
+  .admin-sidebar.open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
   }
 }
