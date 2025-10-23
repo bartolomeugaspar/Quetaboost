@@ -622,6 +622,14 @@
   margin-bottom: 4rem;
 }
 
+.contact-info-header {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--gold-color);
+}
+
 .contact-info h3 {
   font-size: 1.875rem;
   font-weight: 700;
@@ -632,7 +640,8 @@
 .contact-intro {
   color: var(--text-secondary);
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin: 0;
+  font-size: 1rem;
 }
 
 .contact-details {
@@ -643,26 +652,42 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
   background: var(--bg-secondary);
   border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contact-icon {
   color: var(--gold-color);
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .contact-text h4 {
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.9375rem;
 }
 
 .contact-text p {
   color: var(--text-secondary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.contact-text .call-center {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .whatsapp-link {

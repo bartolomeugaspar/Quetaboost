@@ -76,11 +76,13 @@ const Contact = () => {
 
         <div className="contact-content">
           <div className="contact-info">
-            <h3>Informações de Contacto</h3>
-            <p className="contact-intro">
-              Estamos sempre disponíveis para ajudar. Entre em contacto através de qualquer 
-              um dos meios abaixo ou preencha o formulário ao lado.
-            </p>
+            <div className="contact-info-header">
+              <h3>Informações de Contacto</h3>
+              <p className="contact-intro">
+                Estamos sempre disponíveis para ajudar. Entre em contacto através de qualquer 
+                um dos meios abaixo ou preencha o formulário ao lado.
+              </p>
+            </div>
 
             <div className="contact-details">
               <div className="contact-item">
