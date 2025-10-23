@@ -5,7 +5,7 @@ import MainLayout from './components/MainLayout';
 import BlogPost from './components/BlogPost';
 import Login from './components/Login';
 import AdminLayout from './components/admin/AdminLayout';
-import DashboardContent from './components/admin/DashboardContent';
+import DashboardContent from './components/admin/DashboardContentNew';
 import PostsContent from './components/admin/PostsContent';
 import ContactsContent from './components/admin/ContactsContent';
 import UsersContent from './components/admin/UsersContent';
