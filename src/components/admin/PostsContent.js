@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2 } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, Filter } from 'lucide-react';
 
 function PostsContent({ fetchStats }) {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterCategory, setFilterCategory] = useState('all');
+  const [filterStatus, setFilterStatus] = useState('all');
 
   useEffect(() => {
     fetchPosts();
@@ -19,10 +23,40 @@ function PostsContent({ fetchStats }) {
       });
       const data = await response.json();
       setPosts(data.posts || []);
+      setFilteredPosts(data.posts || []);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
   };
+
+  // Filtrar posts quando mudar pesquisa ou filtros
+  useEffect(() => {
+    let result = posts;
+
+    // Filtro de pesquisa
+    if (searchTerm) {
+      result = result.filter(post =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.category?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Filtro de categoria
+    if (filterCategory !== 'all') {
+      result = result.filter(post => post.category === filterCategory);
+    }
+
+    // Filtro de status
+    if (filterStatus !== 'all') {
+      result = result.filter(post => post.status === filterStatus);
+    }
+
+    setFilteredPosts(result);
+  }, [searchTerm, filterCategory, filterStatus, posts]);
+
+  // Obter categorias únicas
+  const categories = [...new Set(posts.map(post => post.category).filter(Boolean))];
 
   const handleDelete = async (postId) => {
     if (!window.confirm('Tem certeza que deseja excluir este post?')) return;
@@ -49,6 +83,22 @@ function PostsContent({ fetchStats }) {
   return (
     <div className="posts-content-new">
       <div className="content-header-new">
+        {/* Barra de Pesquisa */}
+        <div className="search-box">
+          <Search size={20} />
+          <input
+            type="text"
+            placeholder="Pesquisar posts..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {searchTerm && (
+            <span className="results-count-inline">
+              {filteredPosts.length} resultado{filteredPosts.length !== 1 ? 's' : ''}
+            </span>
+          )}
+        </div>
+
         <button 
           className="create-button-new"
           onClick={() => navigate('/admin/posts/new')}
@@ -71,7 +121,7 @@ function PostsContent({ fetchStats }) {
             </tr>
           </thead>
           <tbody>
-            {posts.map(post => (
+            {filteredPosts.map(post => (
               <tr key={post.id}>
                 <td>{post.title}</td>
                 <td>{post.category}</td>

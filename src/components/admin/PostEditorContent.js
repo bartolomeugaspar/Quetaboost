@@ -186,7 +186,7 @@ function PostEditorContent({ fetchStats }) {
 
             {/* Resumo */}
             <div className="excerpt-section">
-              <label>Resumo do Post</label>
+              <label>Resumo do Post <span className="required">*</span></label>
               <textarea
                 name="excerpt"
                 value={formData.excerpt}
@@ -194,19 +194,21 @@ function PostEditorContent({ fetchStats }) {
                 placeholder="Escreva um breve resumo que aparecerá nas listagens..."
                 rows="2"
                 maxLength="300"
+                required
               />
               <span className="char-count">{formData.excerpt.length}/300</span>
             </div>
 
             {/* Conteúdo */}
             <div className="content-section">
-              <label>Conteúdo do Post</label>
+              <label>Conteúdo do Post <span className="required">*</span></label>
               <textarea
                 name="content"
                 value={formData.content}
                 onChange={handleChange}
                 placeholder="Escreva o conteúdo do seu post aqui. Você pode usar HTML para formatação..."
                 rows="12"
+                required
               />
             </div>
           </div>
@@ -225,7 +227,7 @@ function PostEditorContent({ fetchStats }) {
               <div className="config-group">
                 <label>
                   <ImageIcon size={18} />
-                  Imagem de Capa
+                  Imagem de Capa <span className="required">*</span>
                 </label>
                 <input
                   type="url"
@@ -233,6 +235,7 @@ function PostEditorContent({ fetchStats }) {
                   value={formData.image}
                   onChange={handleChange}
                   placeholder="https://exemplo.com/imagem.jpg"
+                  required
                 />
                 <small>Recomendado: 1200x630px</small>
               </div>
@@ -241,12 +244,13 @@ function PostEditorContent({ fetchStats }) {
               <div className="config-group">
                 <label>
                   <Folder size={18} />
-                  Categoria
+                  Categoria <span className="required">*</span>
                 </label>
                 <select
                   name="category"
                   value={formData.category}
                   onChange={handleChange}
+                  required
                 >
                   <option value="">Selecione uma categoria</option>
                   {categories.map(cat => (
@@ -259,7 +263,7 @@ function PostEditorContent({ fetchStats }) {
               <div className="config-group">
                 <label>
                   <Tag size={18} />
-                  Tags
+                  Tags <span className="required">*</span>
                 </label>
                 <input
                   type="text"
@@ -267,6 +271,7 @@ function PostEditorContent({ fetchStats }) {
                   value={formData.tags}
                   onChange={handleChange}
                   placeholder="marketing, digital, seo"
+                  required
                 />
                 <small>Separe com vírgulas</small>
               </div>
@@ -314,7 +319,7 @@ function PostEditorContent({ fetchStats }) {
                     type="submit"
                     className="btn-publish-sidebar"
                     onClick={() => setFormData({ ...formData, status: 'published' })}
-                    disabled={loading || !formData.title || !formData.content}
+                    disabled={loading || !formData.title || !formData.excerpt || !formData.content || !formData.image || !formData.category || !formData.tags}
                   >
                     <Send size={18} />
                     {formData.status === 'published' ? 'Atualizar' : 'Publicar'}

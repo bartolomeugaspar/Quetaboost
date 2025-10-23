@@ -177,12 +177,13 @@
   margin-bottom: 2rem;
   border-radius: 12px;
   overflow: hidden;
+  border: 2px solid #e5e7eb;
+  background: #f9fafb;
 }
 
 .cover-image-section img {
   width: 100%;
-  height: auto;
-  max-height: 400px;
+  height: 200px;
   object-fit: cover;
   display: block;
 }
@@ -191,21 +192,25 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(239, 68, 68, 0.9);
   color: white;
   border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
   transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-remove-cover:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(220, 38, 38, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Excerpt Section */
@@ -221,6 +226,11 @@
   color: #374151;
   margin-bottom: 0.75rem;
   font-size: 0.95rem;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
 }
 
 .excerpt-section textarea {
@@ -350,16 +360,17 @@
 
 /* Status Options */
 .status-options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 }
 
 .radio-option {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.5rem;
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   cursor: pointer;
@@ -369,6 +380,11 @@
 .radio-option:hover {
   background: white;
   border-color: #d1d5db;
+}
+
+.radio-option:has(input:checked) {
+  background: #fef3c7;
+  border-color: var(--gold-color);
 }
 
 .radio-option input[type="radio"] {
@@ -383,8 +399,9 @@
 }
 
 .radio-option span {
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   color: #374151;
+  font-weight: 500;
 }
 
 /* Sidebar Action Buttons */

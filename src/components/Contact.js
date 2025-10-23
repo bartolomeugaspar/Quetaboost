@@ -27,18 +27,43 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    alert('Mensagem enviada com sucesso! Entraremos em contacto em breve.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('✅ Mensagem enviada com sucesso! Entraremos em contacto em breve.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setError(data.error || 'Erro ao enviar mensagem. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Error submitting contact:', error);
+      setError('Erro ao enviar mensagem. Verifique sua conexão e tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -134,6 +159,18 @@ const Contact = () => {
 
           <div className="contact-form-container">
             <h3>Envie-nos uma Mensagem</h3>
+            {error && (
+              <div className="error-message" style={{
+                background: '#fee2e2',
+                color: '#991b1b',
+                padding: '1rem',
+                borderRadius: '8px',
+                marginBottom: '1rem',
+                border: '1px solid #fecaca'
+              }}>
+                {error}
+              </div>
+            )}
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
@@ -203,8 +240,8 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-primary">
-                Enviar Mensagem <Send size={20} />
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? 'Enviando...' : 'Enviar Mensagem'} <Send size={20} />
               </button>
             </form>
           </div>

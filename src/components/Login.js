@@ -108,12 +108,6 @@ function Login() {
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
         </form>
-
-        <div className="login-footer">
-          <p>Credenciais padrão:</p>
-          <p><strong>Email:</strong> admin@quetaboost.com</p>
-          <p><strong>Senha:</strong> admin123</p>
-        </div>
       </div>
     </div>
   );
