@@ -31,7 +31,7 @@ function Header({ user, sidebarOpen, setSidebarOpen, stats }) {
 
       <div className="header-right">
         <button className="header-notification">
-          <Bell size={20} />
+          <Bell size={24} />
           {stats.newContacts > 0 && (
             <span className="notification-badge">{stats.newContacts}</span>
           )}
