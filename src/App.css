@@ -1084,3 +1084,4 @@
 
 /* Import Blog and Admin styles */
 @import './BlogAdmin.css';
+@import './AdminNew.css';
