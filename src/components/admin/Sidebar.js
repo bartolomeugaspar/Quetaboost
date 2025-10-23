@@ -5,12 +5,18 @@ import {
   FileText, 
   Mail, 
   Users, 
-  Settings 
+  LogOut
 } from 'lucide-react';
 
 function Sidebar({ sidebarOpen, stats }) {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/admin');
+  };
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -65,9 +71,9 @@ function Sidebar({ sidebarOpen, stats }) {
       </nav>
 
       <div className="sidebar-footer">
-        <button className="sidebar-settings">
-          <Settings size={20} />
-          {sidebarOpen && <span>Configurações</span>}
+        <button onClick={handleLogout} className="sidebar-logout">
+          <LogOut size={20} />
+          {sidebarOpen && <span>Sair</span>}
         </button>
       </div>
     </aside>

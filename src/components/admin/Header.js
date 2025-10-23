@@ -1,16 +1,9 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { LogOut, Menu, X, Bell } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { Menu, X, Bell } from 'lucide-react';
 
 function Header({ user, sidebarOpen, setSidebarOpen, stats }) {
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/admin');
-  };
 
   const getPageTitle = () => {
     const path = location.pathname;
@@ -51,10 +44,6 @@ function Header({ user, sidebarOpen, setSidebarOpen, stats }) {
             <span className="user-role">{user?.role}</span>
           </div>
         </div>
-
-        <button onClick={handleLogout} className="logout-button-new">
-          <LogOut size={20} />
-        </button>
       </div>
     </header>
   );
