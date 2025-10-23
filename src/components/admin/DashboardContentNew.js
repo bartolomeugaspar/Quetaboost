@@ -251,11 +251,11 @@ function DashboardContentNew({ stats }) {
 
         {/* Performance Metrics */}
         <div className="performance-card">
-          <div className="chart-card-header" style={{ color: 'white' }}>
-            <div className="chart-icon" style={{ background: 'rgba(255,255,255,0.2)' }}>
-              <Star size={20} style={{ color: 'white' }} />
+          <div className="chart-card-header" style={{ color: '#d4af37' }}>
+            <div className="chart-icon" style={{ background: 'rgba(212, 175, 55, 0.2)' }}>
+              <Star size={20} style={{ color: '#d4af37' }} />
             </div>
-            <h3 style={{ color: 'white' }}>Métricas de Desempenho</h3>
+            <h3 style={{ color: '#d4af37', fontWeight: '700' }}>Métricas de Desempenho</h3>
           </div>
           <div className="performance-metrics">
             <div className="performance-item">

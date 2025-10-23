@@ -26,12 +26,12 @@
 
 /* Welcome Card */
 .welcome-card {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
   border-radius: 20px;
   padding: 32px;
   margin-bottom: 32px;
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #d4af37;
 }
 
 .welcome-content {
@@ -42,27 +42,27 @@
 }
 
 .welcome-icon {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
   padding: 16px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #000;
   flex-shrink: 0;
-  box-shadow: 0 8px 16px -4px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 8px 16px -4px rgba(212, 175, 55, 0.5);
 }
 
 .welcome-text h2 {
   font-size: 24px;
   font-weight: 700;
-  color: white;
+  color: #d4af37;
   margin-bottom: 8px;
 }
 
 .welcome-text p {
   font-size: 15px;
-  color: #cbd5e1;
+  color: #e5e5e5;
   line-height: 1.6;
 }
 
@@ -70,10 +70,11 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(212, 175, 55, 0.1);
   border-radius: 12px;
   padding: 20px;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .welcome-stat-item {
@@ -86,12 +87,12 @@
 .welcome-stat-value {
   font-size: 28px;
   font-weight: 700;
-  color: #f59e0b;
+  color: #d4af37;
 }
 
 .welcome-stat-label {
   font-size: 13px;
-  color: #94a3b8;
+  color: #999;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -99,7 +100,7 @@
 .welcome-stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(212, 175, 55, 0.3);
 }
 
 /* Stats Grid */
@@ -271,11 +272,11 @@
 
 /* Performance Card */
 .performance-card {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: white;
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  color: white;
+  border: 1px solid #f3f4f6;
 }
 
 .performance-metrics {
@@ -285,10 +286,10 @@
 }
 
 .performance-item {
-  background: rgba(255, 255, 255, 0.1);
+  background: #f9fafb;
   border-radius: 12px;
   padding: 16px;
-  backdrop-filter: blur(10px);
+  border: 1px solid #e5e7eb;
 }
 
 .performance-item-header {
@@ -300,29 +301,31 @@
 
 .performance-label {
   font-size: 14px;
-  opacity: 0.9;
+  font-weight: 600;
+  color: #4b5563;
 }
 
 .performance-value {
   font-size: 24px;
   font-weight: 700;
+  color: #1f2937;
 }
 
 .performance-description {
   font-size: 12px;
-  opacity: 0.75;
+  color: #6b7280;
 }
 
 .performance-progress {
   width: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  background: #e5e7eb;
   border-radius: 9999px;
   height: 8px;
   overflow: hidden;
 }
 
 .performance-progress-fill {
-  background: white;
+  background: #d4af37;
   height: 100%;
   border-radius: 9999px;
   transition: width 0.5s ease;
