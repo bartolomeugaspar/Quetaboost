@@ -23,7 +23,7 @@ function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
     setTimeout(() => {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      navigate('/admin');
+      navigate('/');
     }, 1500);
   };
 
