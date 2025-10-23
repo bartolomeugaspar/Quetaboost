@@ -26,12 +26,12 @@
 
 /* Welcome Card */
 .welcome-card {
-  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  background: white;
   border-radius: 20px;
   padding: 32px;
   margin-bottom: 32px;
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
-  border: 1px solid #d4af37;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
 }
 
 .welcome-content {
@@ -42,27 +42,26 @@
 }
 
 .welcome-icon {
-  background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+  background: #fed7aa;
   padding: 16px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: #ea580c;
   flex-shrink: 0;
-  box-shadow: 0 8px 16px -4px rgba(212, 175, 55, 0.5);
 }
 
 .welcome-text h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #d4af37;
+  color: #1f2937;
   margin-bottom: 8px;
 }
 
 .welcome-text p {
   font-size: 15px;
-  color: #e5e5e5;
+  color: #6b7280;
   line-height: 1.6;
 }
 
@@ -70,11 +69,10 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: rgba(212, 175, 55, 0.1);
+  background: #f9fafb;
   border-radius: 12px;
   padding: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid #e5e7eb;
 }
 
 .welcome-stat-item {
@@ -87,12 +85,12 @@
 .welcome-stat-value {
   font-size: 28px;
   font-weight: 700;
-  color: #d4af37;
+  color: #1f2937;
 }
 
 .welcome-stat-label {
   font-size: 13px;
-  color: #999;
+  color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -100,7 +98,7 @@
 .welcome-stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(212, 175, 55, 0.3);
+  background: #e5e7eb;
 }
 
 /* Stats Grid */
