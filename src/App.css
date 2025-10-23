@@ -622,14 +622,6 @@
   margin-bottom: 4rem;
 }
 
-.contact-info-header {
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  border-left: 4px solid var(--gold-color);
-}
-
 .contact-info h3 {
   font-size: 1.875rem;
   font-weight: 700;
@@ -640,7 +632,7 @@
 .contact-intro {
   color: var(--text-secondary);
   line-height: 1.7;
-  margin: 0;
+  margin-bottom: 2rem;
   font-size: 1rem;
 }
 
