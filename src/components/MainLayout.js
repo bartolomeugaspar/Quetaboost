@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronUp, Shield } from 'lucide-react';
 import Home from './Home';
 import About from './About';
 import Services from './Services';
@@ -7,6 +8,7 @@ import Blog from './Blog';
 import Contact from './Contact';
 
 function MainLayout() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -56,6 +58,9 @@ function MainLayout() {
             </button>
             <button className="nav-link" onClick={() => scrollToSection('contact')}>
               Contactos
+            </button>
+            <button className="nav-link" onClick={() => navigate('/admin')}>
+              Admin
             </button>
           </div>
 
