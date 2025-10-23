@@ -15,7 +15,7 @@ function LogsContent() {
     const token = localStorage.getItem('token');
     
     try {
-      const response = await fetch('http://localhost:5000/api/auth/logs', {
+      const response = await fetch('http://localhost:5000/api/logs', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -142,42 +142,6 @@ function LogsContent() {
           <option value="success">Sucesso</option>
           <option value="failed">Falhou</option>
         </select>
-      </div>
-
-      <div className="logs-stats">
-        <div className="log-stat-card">
-          <div className="log-stat-icon success">
-            <Shield size={20} />
-          </div>
-          <div className="log-stat-info">
-            <span className="log-stat-value">
-              {logs.filter(l => l.status === 'success').length}
-            </span>
-            <span className="log-stat-label">Logins Bem-sucedidos</span>
-          </div>
-        </div>
-
-        <div className="log-stat-card">
-          <div className="log-stat-icon failed">
-            <Shield size={20} />
-          </div>
-          <div className="log-stat-info">
-            <span className="log-stat-value">
-              {logs.filter(l => l.status === 'failed').length}
-            </span>
-            <span className="log-stat-label">Tentativas Falhadas</span>
-          </div>
-        </div>
-
-        <div className="log-stat-card">
-          <div className="log-stat-icon total">
-            <Calendar size={20} />
-          </div>
-          <div className="log-stat-info">
-            <span className="log-stat-value">{logs.length}</span>
-            <span className="log-stat-label">Total de Registros</span>
-          </div>
-        </div>
       </div>
 
       <div className="table-container-new">
