@@ -4,7 +4,8 @@ import {
   BarChart3, 
   FileText, 
   Mail, 
-  Users, 
+  Users,
+  Shield,
   LogOut
 } from 'lucide-react';
 
@@ -81,7 +82,7 @@ function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
           onClick={() => handleNavigate('/admin/contacts')}
         >
           <Mail size={20} />
-          {sidebarOpen && <span>Contatos</span>}
+          {sidebarOpen && <span>Mensagens</span>}
           {sidebarOpen && stats.newContacts > 0 && (
             <span className="badge badge-alert">{stats.newContacts}</span>
           )}
@@ -94,6 +95,14 @@ function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
           <Users size={20} />
           {sidebarOpen && <span>Usuários</span>}
           {sidebarOpen && <span className="badge">{stats.totalUsers}</span>}
+        </button>
+        
+        <button 
+          className={isActive('/admin/logs') ? 'active' : ''}
+          onClick={() => handleNavigate('/admin/logs')}
+        >
+          <Shield size={20} />
+          {sidebarOpen && <span>Logs</span>}
         </button>
       </nav>
 

@@ -14,6 +14,7 @@ function Header({ user, sidebarOpen, setSidebarOpen, stats }) {
     if (path.includes('/admin/contacts/')) return 'Editor de Contatos';
     if (path === '/admin/users') return 'Gerenciar Usuários';
     if (path.includes('/admin/users/')) return 'Editor de Usuários';
+    if (path === '/admin/logs') return 'Logs de Autenticação';
     return 'Painel Admin';
   };
 

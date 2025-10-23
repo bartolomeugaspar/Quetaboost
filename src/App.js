@@ -9,6 +9,7 @@ import DashboardContent from './components/admin/DashboardContentNew';
 import PostsContent from './components/admin/PostsContent';
 import ContactsContent from './components/admin/ContactsContent';
 import UsersContent from './components/admin/UsersContent';
+import LogsContent from './components/admin/LogsContent';
 import PostEditorContent from './components/admin/PostEditorContent';
 import UserEditorContent from './components/admin/UserEditorContent';
 import ContactEditorContent from './components/admin/ContactEditorContent';
@@ -39,6 +40,9 @@ function App() {
         <Route path="/admin/users" element={<AdminLayout><UsersContent /></AdminLayout>} />
         <Route path="/admin/users/new" element={<AdminLayout><UserEditorContent /></AdminLayout>} />
         <Route path="/admin/users/edit/:id" element={<AdminLayout><UserEditorContent /></AdminLayout>} />
+        
+        {/* Logs */}
+        <Route path="/admin/logs" element={<AdminLayout><LogsContent /></AdminLayout>} />
       </Routes>
     </Router>
   );
