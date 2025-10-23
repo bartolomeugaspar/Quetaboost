@@ -145,41 +145,37 @@ function LogsContent() {
       </div>
 
       <div className="table-container-new">
-        <table className="admin-table-new logs-table">
+        <table className="admin-table-new">
           <thead>
             <tr>
-              <th><User size={16} /> Usuário</th>
+              <th>Usuário</th>
               <th>Email</th>
               <th>Status</th>
               <th>IP</th>
               <th>Navegador</th>
-              <th><Clock size={16} /> Data/Hora</th>
+              <th>Data/Hora</th>
             </tr>
           </thead>
           <tbody>
             {filteredLogs.length === 0 ? (
               <tr>
-                <td colSpan="6" className="no-data">
+                <td colSpan="6" style={{ textAlign: 'center', padding: '2rem' }}>
                   Nenhum log encontrado
                 </td>
               </tr>
             ) : (
               filteredLogs.map(log => (
                 <tr key={log.id}>
-                  <td className="user-cell">
-                    <strong>{log.user_name || 'N/A'}</strong>
-                  </td>
+                  <td><strong>{log.user_name || 'N/A'}</strong></td>
                   <td>{log.user_email}</td>
                   <td>
                     <span className={`status-badge ${getStatusColor(log.status)}`}>
                       {getStatusText(log.status)}
                     </span>
                   </td>
-                  <td className="ip-cell">{log.ip_address || 'N/A'}</td>
-                  <td className="browser-cell">
-                    {log.user_agent ? log.user_agent.substring(0, 50) + '...' : 'N/A'}
-                  </td>
-                  <td className="date-cell">{formatDate(log.created_at)}</td>
+                  <td>{log.ip_address || 'N/A'}</td>
+                  <td>{log.user_agent ? log.user_agent.substring(0, 50) + '...' : 'N/A'}</td>
+                  <td>{formatDate(log.created_at)}</td>
                 </tr>
               ))
             )}

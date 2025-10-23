@@ -273,17 +273,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary-color), var(--bg-dark));
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+  position: relative;
   padding: 2rem;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(201, 160, 95, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(201, 160, 95, 0.08) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .login-box {
   background: var(--bg-primary);
   border-radius: 16px;
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(201, 160, 95, 0.1);
   padding: 3rem;
   max-width: 450px;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .login-header {
