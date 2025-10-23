@@ -117,7 +117,7 @@ function DashboardContentNew({ stats }) {
       <div className="welcome-card">
         <div className="welcome-content">
           <div className="welcome-icon">
-            <Activity size={28} />
+            <Activity className="welcome-icon-svg" size={28} />
           </div>
           <div className="welcome-text">
             <h2>Bem-vindo ao Painel Queta Boost</h2>
