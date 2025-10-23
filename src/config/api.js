@@ -1,5 +1,5 @@
 // Configuração da API
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://quetaboost-back.vercel.app';
 
 // Log para debug (remover em produção)
 console.log('🔧 API_BASE_URL:', API_BASE_URL);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, User, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowRight, Eye } from 'lucide-react';
 import { API_BASE_URL } from '../config/api';
 
 function Blog() {
