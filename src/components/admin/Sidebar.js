@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   BarChart3, 
@@ -6,17 +6,25 @@ import {
   Mail, 
   Users,
   Shield,
-  LogOut
+  LogOut,
+  CheckCircle
 } from 'lucide-react';
 
 function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/admin');
+    // Mostrar modal de sucesso
+    setShowLogoutModal(true);
+
+    // Aguardar 1.5 segundos antes de fazer logout
+    setTimeout(() => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/admin');
+    }, 1500);
   };
 
   const isActive = (path) => {
@@ -51,13 +59,25 @@ function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
   }, [sidebarOpen, setSidebarOpen]);
 
   return (
-    <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-      <div className="sidebar-header">
-        <div className="sidebar-logo">
-          <img src="/images/services-2.jpeg" alt="Queta Boost" />
-          {sidebarOpen && <h2>QuetaBoost</h2>}
+    <>
+      {showLogoutModal && (
+        <div className="success-modal">
+          <div className="success-modal-content">
+            <CheckCircle size={64} className="success-modal-icon" />
+            <h2>Logout Realizado!</h2>
+            <p>Até breve...</p>
+            <div className="spinner-small"></div>
+          </div>
         </div>
-      </div>
+      )}
+
+      <aside className={`admin-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+        <div className="sidebar-header">
+          <div className="sidebar-logo">
+            <img src="/images/services-2.jpeg" alt="Queta Boost" />
+            {sidebarOpen && <h2>QuetaBoost</h2>}
+          </div>
+        </div>
 
       <nav className="sidebar-nav">
         <button 
@@ -112,7 +132,8 @@ function Sidebar({ sidebarOpen, stats, setSidebarOpen }) {
           {sidebarOpen && <span>Sair</span>}
         </button>
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }
 

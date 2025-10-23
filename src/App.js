@@ -4,6 +4,8 @@ import './App.css';
 import MainLayout from './components/MainLayout';
 import BlogPost from './components/BlogPost';
 import Login from './components/Login';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
 import AdminLayout from './components/admin/AdminLayout';
 import DashboardContent from './components/admin/DashboardContentNew';
 import PostsContent from './components/admin/PostsContent';
@@ -22,6 +24,8 @@ function App() {
         <Route path="/" element={<MainLayout />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/admin" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         
         {/* Admin Routes with Layout (Sidebar + Header fixos) */}
         <Route path="/admin/dashboard" element={<AdminLayout><DashboardContent /></AdminLayout>} />

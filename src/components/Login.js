@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Lock, Mail, LogIn } from 'lucide-react';
+import { Lock, Mail, LogIn, CheckCircle } from 'lucide-react';
 
 function Login() {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ function Login() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -43,8 +44,13 @@ function Login() {
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
-      // Redirect to admin dashboard
-      navigate('/admin/dashboard');
+      // Show success message
+      setSuccess(true);
+
+      // Redirect after 1.5 seconds
+      setTimeout(() => {
+        navigate('/admin/dashboard');
+      }, 1500);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -54,6 +60,17 @@ function Login() {
 
   return (
     <div className="login-container">
+      {success && (
+        <div className="success-modal">
+          <div className="success-modal-content">
+            <CheckCircle size={64} className="success-modal-icon" />
+            <h2>Login Realizado!</h2>
+            <p>Redirecionando para o painel...</p>
+            <div className="spinner-small"></div>
+          </div>
+        </div>
+      )}
+
       <div className="login-box">
         <div className="login-header">
           <LogIn size={48} className="login-icon" />
