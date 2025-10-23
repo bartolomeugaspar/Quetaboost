@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FileText, Eye, Mail, Users, TrendingUp, Calendar, 
-  CheckCircle, Clock, ArrowUp, Activity,
-  BarChart3, PieChart, MessageSquare, Star
+import { BarChart3, TrendingUp, Users, FileText, Mail, Eye, Calendar, 
+  CheckCircle, Clock, ArrowUp, Activity, MessageSquare, Star
 } from 'lucide-react';
 import {
-  BarChart, Bar, PieChart as RechartsPie, Pie, Cell,
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer
+  ResponsiveContainer, BarChart, Bar, PieChart as RechartsPie, Pie, Cell
 } from 'recharts';
+import { API_BASE_URL } from '../../config/api';
 import './DashboardNew.css';
 
 function DashboardContentNew({ stats }) {
@@ -27,7 +25,7 @@ function DashboardContentNew({ stats }) {
     
     try {
       // Fetch posts
-      const postsResponse = await fetch('http://localhost:5000/api/posts/admin/all', {
+      const postsResponse = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const postsData = await postsResponse.json();
@@ -66,7 +64,7 @@ function DashboardContentNew({ stats }) {
       setViewsData(viewsChartData);
 
       // Fetch contacts
-      const contactsResponse = await fetch('http://localhost:5000/api/contacts', {
+      const contactsResponse = await fetch(`${API_BASE_URL}/api/contacts`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const contactsDataRes = await contactsResponse.json();

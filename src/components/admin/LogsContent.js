@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Search, Calendar, User, Clock } from 'lucide-react';
+import { Shield, Calendar, User, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { API_BASE_URL } from '../../config/api';
 
 function LogsContent() {
   const [logs, setLogs] = useState([]);
@@ -15,7 +16,7 @@ function LogsContent() {
     const token = localStorage.getItem('token');
     
     try {
-      const response = await fetch('http://localhost:5000/api/logs', {
+      const response = await fetch(`${API_BASE_URL}/api/logs`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();

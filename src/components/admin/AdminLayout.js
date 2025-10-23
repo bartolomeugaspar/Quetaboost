@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import { API_BASE_URL } from '../../config/api';
 
 function AdminLayout({ children }) {
   const navigate = useNavigate();
@@ -37,19 +38,19 @@ function AdminLayout({ children }) {
     
     try {
       // Fetch posts
-      const postsResponse = await fetch('http://localhost:5000/api/posts/admin/all', {
+      const postsResponse = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const postsData = await postsResponse.json();
 
       // Fetch contacts
-      const contactsResponse = await fetch('http://localhost:5000/api/contacts', {
+      const contactsResponse = await fetch(`${API_BASE_URL}/api/contacts`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const contactsData = await contactsResponse.json();
 
       // Fetch users
-      const usersResponse = await fetch('http://localhost:5000/api/users', {
+      const usersResponse = await fetch(`${API_BASE_URL}/api/users`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const usersData = await usersResponse.json();

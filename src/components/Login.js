@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, LogIn, CheckCircle } from 'lucide-react';
+import API_ENDPOINTS from '../config/api';
 
 function Login() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function Login() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(API_ENDPOINTS.auth.login, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +38,16 @@ function Login() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Login failed');
+        // Traduzir mensagens de erro para português
+        let errorMessage = 'Erro ao fazer login';
+        if (data.error === 'Invalid credentials') {
+          errorMessage = 'Email ou senha incorretos';
+        } else if (data.error === 'Please provide email and password') {
+          errorMessage = 'Por favor, preencha email e senha';
+        } else if (data.error) {
+          errorMessage = data.error;
+        }
+        throw new Error(errorMessage);
       }
 
       // Save token and user data

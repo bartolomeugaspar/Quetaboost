@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, ArrowLeft, CheckCircle } from 'lucide-react';
+import API_ENDPOINTS from '../config/api';
 
 function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ function ForgotPassword() {
     setSuccess(false);
 
     try {
-      const response = await fetch('http://localhost:5000/api/password-reset/request', {
+      const response = await fetch(API_ENDPOINTS.passwordReset.request, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

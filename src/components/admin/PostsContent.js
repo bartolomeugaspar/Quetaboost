@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Search, Filter } from 'lucide-react';
+import { Plus, Search, Eye, Edit, Trash2, Calendar, TrendingUp } from 'lucide-react';
+import { API_BASE_URL } from '../../config/api';
 
 function PostsContent({ fetchStats }) {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function PostsContent({ fetchStats }) {
     const token = localStorage.getItem('token');
     
     try {
-      const response = await fetch('http://localhost:5000/api/posts/admin/all', {
+      const response = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -63,7 +64,7 @@ function PostsContent({ fetchStats }) {
 
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/posts/${postId}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

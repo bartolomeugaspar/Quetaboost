@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, User, Eye, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 function Blog() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     fetchPosts();
   }, []);
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts');
+      const response = await fetch(`${API_BASE_URL}/api/posts`);
       if (!response.ok) {
         throw new Error('Failed to fetch posts');
       }

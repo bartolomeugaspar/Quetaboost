@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { Lock, CheckCircle, AlertCircle } from 'lucide-react';
+import API_ENDPOINTS from '../config/api';
 
 function ResetPassword() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function ResetPassword() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/password-reset/verify', {
+      const response = await fetch(API_ENDPOINTS.passwordReset.verify, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -81,7 +82,7 @@ function ResetPassword() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/password-reset/reset', {
+      const response = await fetch(API_ENDPOINTS.passwordReset.reset, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

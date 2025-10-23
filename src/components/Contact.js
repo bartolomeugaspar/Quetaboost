@@ -10,6 +10,7 @@ import {
   Linkedin,
   Youtube
 } from 'lucide-react';
+import API_ENDPOINTS from '../config/api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ const Contact = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(API_ENDPOINTS.contacts.create, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

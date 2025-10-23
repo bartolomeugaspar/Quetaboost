@@ -135,8 +135,11 @@
 
 .error-message {
   color: #dc2626;
-  background: #fee2e2;
-  border-radius: 8px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  text-align: left;
 }
 
 /* Blog Post Page */

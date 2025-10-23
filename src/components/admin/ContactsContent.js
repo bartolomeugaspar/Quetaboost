@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Search, Filter, Eye, Trash2, Mail, Phone, Calendar, Tag, Plus } from 'lucide-react';
+import { API_BASE_URL } from '../../config/api';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Mail, Eye } from 'lucide-react';
 
 function ContactsContent({ fetchStats }) {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function ContactsContent({ fetchStats }) {
     const token = localStorage.getItem('token');
     
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(`${API_BASE_URL}/api/contacts`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -29,7 +30,7 @@ function ContactsContent({ fetchStats }) {
   const handleUpdateStatus = async (contactId, newStatus) => {
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${contactId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/contacts/${contactId}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

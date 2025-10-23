@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Calendar, Eye, ArrowLeft, Tag } from 'lucide-react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Calendar, User, ArrowLeft, Tag, Eye } from 'lucide-react';
+import { API_BASE_URL } from '../config/api';
 
 function BlogPost() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function BlogPost() {
 
   const fetchPost = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/slug/${slug}`);
+      const response = await fetch(`${API_BASE_URL}/api/posts/slug/${slug}`);
       if (!response.ok) {
         throw new Error('Post not found');
       }
