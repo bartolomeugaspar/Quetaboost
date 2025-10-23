@@ -694,6 +694,18 @@
   text-decoration: underline;
 }
 
+.contact-text a {
+  color: var(--gold-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-text a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
 .social-media h4 {
   font-weight: 600;
   color: var(--text-primary);

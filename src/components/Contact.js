@@ -88,13 +88,13 @@ const Contact = () => {
                   <Phone size={24} />
                 </div>
                 <div className="contact-text">
-                  <h4>Telefone / WhatsApp</h4>
+                  <h4>Telefone & WhatsApp</h4>
                   <p>
                     <a href="https://wa.me/244954931747" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
                       +244 954 931 747
                     </a>
                   </p>
-                  <p className="call-center">Call Center: +244 942 301 884</p>
+                  <p className="call-center">Atendimento: +244 942 301 884</p>
                 </div>
               </div>
 
@@ -103,7 +103,7 @@ const Contact = () => {
                   <Mail size={24} />
                 </div>
                 <div className="contact-text">
-                  <h4>Email</h4>
+                  <h4>Email Corporativo</h4>
                   <p>
                     <a href="mailto:quetaboost@gmail.com">quetaboost@gmail.com</a>
                   </p>
@@ -115,9 +115,9 @@ const Contact = () => {
                   <MapPin size={24} />
                 </div>
                 <div className="contact-text">
-                  <h4>Localização</h4>
-                  <p>Luanda, Angola</p>
+                  <h4>Nosso Escritório</h4>
                   <p>Rua Principal, Nº 123</p>
+                  <p>Luanda, Angola</p>
                 </div>
               </div>
 
@@ -126,9 +126,9 @@ const Contact = () => {
                   <Clock size={24} />
                 </div>
                 <div className="contact-text">
-                  <h4>Horário de Funcionamento</h4>
-                  <p>Segunda - Sexta: 8:00 - 18:00</p>
-                  <p>Sábado: 9:00 - 13:00</p>
+                  <h4>Horário de Atendimento</h4>
+                  <p>Segunda a Sexta: 08h00 - 18h00</p>
+                  <p>Sábado: 09h00 - 13h00</p>
                 </div>
               </div>
             </div>
