@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Eye, Mail, Users, TrendingUp, Calendar, CheckCircle, Clock } from 'lucide-react';
+import { API_ENDPOINTS, API_BASE_URL } from '../../config/api';
 
 function DashboardContent({ stats }) {
   const [posts, setPosts] = useState([]);
@@ -15,7 +16,7 @@ function DashboardContent({ stats }) {
     
     try {
       // Fetch posts
-      const postsResponse = await fetch('http://localhost:5000/api/posts/admin/all', {
+      const postsResponse = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const postsData = await postsResponse.json();
@@ -27,7 +28,7 @@ function DashboardContent({ stats }) {
       setTopPosts(sorted.slice(0, 5));
 
       // Fetch contacts
-      const contactsResponse = await fetch('http://localhost:5000/api/contacts', {
+      const contactsResponse = await fetch(API_ENDPOINTS.contacts.getAll, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const contactsData = await contactsResponse.json();

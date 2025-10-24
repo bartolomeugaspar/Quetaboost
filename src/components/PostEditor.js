@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save } from 'lucide-react';
+import { API_ENDPOINTS, API_BASE_URL } from '../config/api';
 
 function PostEditor() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function PostEditor() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/admin/all`, {
+      const response = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -81,8 +82,8 @@ function PostEditor() {
 
     try {
       const url = isEditMode 
-        ? `http://localhost:5000/api/posts/${id}`
-        : 'http://localhost:5000/api/posts';
+        ? API_ENDPOINTS.posts.update(id)
+        : API_ENDPOINTS.posts.create;
 
       const method = isEditMode ? 'PUT' : 'POST';
 

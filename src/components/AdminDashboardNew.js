@@ -15,6 +15,7 @@ import {
   Settings,
   Bell
 } from 'lucide-react';
+import { API_ENDPOINTS, API_BASE_URL } from '../config/api';
 
 function AdminDashboardNew() {
   const navigate = useNavigate();
@@ -55,21 +56,21 @@ function AdminDashboardNew() {
     
     try {
       // Fetch posts
-      const postsResponse = await fetch('http://localhost:5000/api/posts/admin/all', {
+      const postsResponse = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const postsData = await postsResponse.json();
       setPosts(postsData.posts || []);
 
       // Fetch contacts
-      const contactsResponse = await fetch('http://localhost:5000/api/contacts', {
+      const contactsResponse = await fetch(API_ENDPOINTS.contacts.getAll, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const contactsData = await contactsResponse.json();
       setContacts(contactsData.contacts || []);
 
       // Fetch users
-      const usersResponse = await fetch('http://localhost:5000/api/users', {
+      const usersResponse = await fetch(API_ENDPOINTS.users.getAll, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const usersData = await usersResponse.json();
@@ -104,7 +105,7 @@ function AdminDashboardNew() {
 
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+      const response = await fetch(API_ENDPOINTS.posts.delete(postId), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -117,7 +118,7 @@ function AdminDashboardNew() {
   const handleUpdateContactStatus = async (contactId, newStatus) => {
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${contactId}`, {
+      const response = await fetch(API_ENDPOINTS.contacts.update(contactId), {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -136,7 +137,7 @@ function AdminDashboardNew() {
 
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const response = await fetch(API_ENDPOINTS.users.delete(userId), {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

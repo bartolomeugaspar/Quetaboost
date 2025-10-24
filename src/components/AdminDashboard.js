@@ -10,6 +10,7 @@ import {
   Plus,
   BarChart3
 } from 'lucide-react';
+import { API_ENDPOINTS, API_BASE_URL } from '../config/api';
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ function AdminDashboard() {
     
     try {
       // Fetch posts
-      const postsResponse = await fetch('http://localhost:5000/api/posts/admin/all', {
+      const postsResponse = await fetch(`${API_BASE_URL}/api/posts/admin/all`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -56,7 +57,7 @@ function AdminDashboard() {
       setPosts(postsData.posts || []);
 
       // Fetch contacts
-      const contactsResponse = await fetch('http://localhost:5000/api/contacts', {
+      const contactsResponse = await fetch(API_ENDPOINTS.contacts.getAll, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -95,7 +96,7 @@ function AdminDashboard() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+      const response = await fetch(API_ENDPOINTS.posts.delete(postId), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -114,7 +115,7 @@ function AdminDashboard() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${contactId}`, {
+      const response = await fetch(API_ENDPOINTS.contacts.update(contactId), {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save, Mail, User, Phone, MessageSquare, CheckCircle } from 'lucide-react';
+import { API_ENDPOINTS } from '../../config/api';
 
 function ContactEditorContent({ fetchStats }) {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function ContactEditorContent({ fetchStats }) {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(API_ENDPOINTS.contacts.getAll, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -66,7 +67,7 @@ function ContactEditorContent({ fetchStats }) {
 
     try {
       if (isEditMode) {
-        const response = await fetch(`http://localhost:5000/api/contacts/${id}`, {
+        const response = await fetch(API_ENDPOINTS.contacts.update(id), {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -81,7 +82,7 @@ function ContactEditorContent({ fetchStats }) {
           throw new Error(data.error || 'Erro ao atualizar contato');
         }
       } else {
-        const response = await fetch('http://localhost:5000/api/contacts', {
+        const response = await fetch(API_ENDPOINTS.contacts.create, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

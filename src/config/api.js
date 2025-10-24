@@ -1,5 +1,5 @@
 // Configuração da API
-const API_BASE_URL = 'https://quetaboost-back.vercel.app';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://quetaboost-back.vercel.app';
 
 // Log para debug (remover em produção)
 console.log('🔧 API_BASE_URL:', API_BASE_URL);

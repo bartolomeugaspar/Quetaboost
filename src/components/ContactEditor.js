@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save, Mail, User, Phone, MessageSquare, CheckCircle } from 'lucide-react';
+import { API_ENDPOINTS } from '../config/api';
 
 function ContactEditor() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function ContactEditor() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch(API_ENDPOINTS.contacts.getAll, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -67,7 +68,7 @@ function ContactEditor() {
     try {
       if (isEditMode) {
         // Update only status for existing contacts
-        const response = await fetch(`http://localhost:5000/api/contacts/${id}`, {
+        const response = await fetch(API_ENDPOINTS.contacts.update(id), {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -83,7 +84,7 @@ function ContactEditor() {
         }
       } else {
         // Create new contact (public endpoint, no auth needed)
-        const response = await fetch('http://localhost:5000/api/contacts', {
+        const response = await fetch(API_ENDPOINTS.contacts.create, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

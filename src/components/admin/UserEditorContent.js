@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save, User } from 'lucide-react';
+import { API_ENDPOINTS } from '../../config/api';
 
 function UserEditorContent({ fetchStats }) {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function UserEditorContent({ fetchStats }) {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const response = await fetch(API_ENDPOINTS.users.getById(id), {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -73,8 +74,8 @@ function UserEditorContent({ fetchStats }) {
 
     try {
       const url = isEditMode 
-        ? `http://localhost:5000/api/users/${id}`
-        : 'http://localhost:5000/api/users';
+        ? API_ENDPOINTS.users.update(id)
+        : API_ENDPOINTS.users.create;
 
       const method = isEditMode ? 'PUT' : 'POST';
 
